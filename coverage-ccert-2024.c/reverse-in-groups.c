@@ -40,3 +40,29 @@ void reverseK(int *arr, int size, int k)
     for (int i = 0; i < size; i++)
         printf("%d ", *(arr + i));
 }
+void reverseKCharles(int* arr, int size, int k)
+{
+    {
+        for (int i = 0; i < size; i += k)
+        {
+            int left = i;
+            int right;
+            // to handle case when k is not multiple of n
+            if(i+k-1<size-1)
+            right = i+k-1;
+            else
+            right = size-1;
+    
+            // reverse the sub-array [left, right]
+            while (left < right)
+                {
+                    // swap
+                    int temp = arr[left];
+                    arr[left] = arr[right];
+                    arr[right] = temp;
+                    left++;
+                    right--;
+                }
+        }
+    }
+}
