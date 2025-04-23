@@ -1,7 +1,10 @@
 // get-second-max.c
 #include <stdio.h>
 
+// Three possible solutions
 int getSecondEle(int *arr, int size);
+int getSecondLargest(int arr[], int size);
+int getSecondThroughSort(int arr[], int size);
 
 int main(void)
 {
@@ -41,4 +44,32 @@ int getSecondEle(int *arr, int size)
     }
 
     return (secMax != NULL) ? *secMax : -1;
+}
+
+int getSecondLargest(int arr[], int size)
+{
+    int largest = -1, secondLargest = -1;
+
+    // Finding the largest element
+    for (int i = 0; i < n; i++) {
+        if (arr[i] > largest)
+            largest = arr[i];
+    }
+
+    // Finding the second largest element
+    for (int i = 0; i < n; i++) {
+        
+        // Update second largest if the current element is greater
+        // than second largest and not equal to the largest
+        if (arr[i] > secondLargest && arr[i] != largest) {
+            secondLargest = arr[i];
+        }
+    }
+    return secondLargest;
+}
+
+int getSecondThroughSort(int arr[], int size)
+{
+    //just bubble sort the entire array
+    //then get size-2;
 }
